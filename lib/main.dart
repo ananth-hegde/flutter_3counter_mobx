@@ -29,8 +29,6 @@ class MyStatefulWidget extends StatefulWidget {
 }
 
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
-  
-  
   static List<Widget> _widgetOptions = <Widget>[
     Counter1Page(),
     Counter2Page(),
@@ -45,40 +43,39 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   Widget build(BuildContext context) {
     return Observer(
       builder: (_) => Scaffold(
-      appBar: AppBar(
-        title: const Text('MobX 3 Counter App'),
-      ),
-      body: Center(
-        child: _widgetOptions.elementAt(dStore.index),
-      ),
-      floatingActionButton: Visibility(
-        visible: cStore.isFloatingButtonVisible,
-        child: FloatingActionButton(
-          onPressed: () => cStore.incrementCounter(dStore.index),
-          child: Icon(Icons.add),
+        appBar: AppBar(
+          title: const Text('MobX 3 Counter App'),
+        ),
+        body: Center(
+          child: _widgetOptions.elementAt(dStore.index),
+        ),
+        floatingActionButton: Visibility(
+          visible: cStore.isFloatingButtonVisible,
+          child: FloatingActionButton(
+            onPressed: () => cStore.incrementCounter(dStore.index),
+            child: Icon(Icons.add),
+          ),
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.first_page),
+              label: 'Counter 1',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.accessible),
+              label: 'Counter 2',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.school),
+              label: 'Counter 3',
+            ),
+          ],
+          currentIndex: dStore.index,
+          selectedItemColor: Colors.amber[800],
+          onTap: _onItemTapped,
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.first_page),
-            label: 'Counter 1',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.accessible),
-            label: 'Counter 2',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'Counter 3',
-          ),
-        ],
-        currentIndex: dStore.index,
-        selectedItemColor: Colors.amber[800],
-        onTap: _onItemTapped,
-      ),
-    ),
-
     );
   }
 }
@@ -99,23 +96,19 @@ class _Counter1PageState extends State<Counter1Page> {
           Text(
             'You have incremented the counter on this page this many times: ',
           ),
-          Observer(builder: (_) => 
-            Text(
+          Observer(
+            builder: (_) => Text(
               '${cStore.counterArray[0]}',
               style: Theme.of(context).textTheme.headline4,
             ),
           ),
-         
-          
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-
               ElevatedButton(
-                child: Text('Increment Counter 1'),
-                onPressed: () => cStore.incrementCounter(dStore.index)
-              ),
+                  child: Text('Increment Counter 1'),
+                  onPressed: () => cStore.incrementCounter(dStore.index)),
               ElevatedButton(
                 child: Text('Show/Hide Floating Button'),
                 onPressed: cStore.changeVisibility,
@@ -124,11 +117,9 @@ class _Counter1PageState extends State<Counter1Page> {
           )
         ],
       ),
-      
     );
   }
 }
-
 
 class Counter2Page extends StatefulWidget {
   @override
@@ -146,23 +137,19 @@ class _Counter2PageState extends State<Counter2Page> {
           Text(
             'You have incremented the counter on this page this many times: ',
           ),
-          Observer(builder: (_) => 
-           Text(
-             '${cStore.counterArray[1]}',
+          Observer(
+            builder: (_) => Text(
+              '${cStore.counterArray[1]}',
               style: Theme.of(context).textTheme.headline4,
-           ),
+            ),
           ),
-         
-          
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-
               ElevatedButton(
-                child: Text('Increment Counter 2'),
-                onPressed: () => cStore.incrementCounter(dStore.index)
-              ),
+                  child: Text('Increment Counter 2'),
+                  onPressed: () => cStore.incrementCounter(dStore.index)),
               ElevatedButton(
                 child: Text('Show/Hide Floating Button'),
                 onPressed: cStore.changeVisibility,
@@ -171,11 +158,9 @@ class _Counter2PageState extends State<Counter2Page> {
           )
         ],
       ),
-      
     );
   }
 }
-
 
 class Counter3Page extends StatefulWidget {
   @override
@@ -193,23 +178,19 @@ class _Counter3PageState extends State<Counter3Page> {
           Text(
             'You have incremented the counter on this page this many times: ',
           ),
-          Observer(builder: (_) => 
-           Text(
-             '${cStore.counterArray[2]}',
-            style: Theme.of(context).textTheme.headline4,
-           ),
+          Observer(
+            builder: (_) => Text(
+              '${cStore.counterArray[2]}',
+              style: Theme.of(context).textTheme.headline4,
+            ),
           ),
-         
-          
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-
               ElevatedButton(
-                child: Text('Increment Counter 3'),
-                onPressed: () => cStore.incrementCounter(dStore.index)
-              ),
+                  child: Text('Increment Counter 3'),
+                  onPressed: () => cStore.incrementCounter(dStore.index)),
               ElevatedButton(
                 child: Text('Show/Hide Floating Button'),
                 onPressed: cStore.changeVisibility,
@@ -218,7 +199,6 @@ class _Counter3PageState extends State<Counter3Page> {
           )
         ],
       ),
-      
     );
   }
 }
