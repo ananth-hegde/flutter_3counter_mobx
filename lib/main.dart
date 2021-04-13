@@ -30,9 +30,9 @@ class MyStatefulWidget extends StatefulWidget {
 
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   static List<Widget> _widgetOptions = <Widget>[
-    Counter1Page(),
-    Counter2Page(),
-    Counter3Page()
+    CounterPage(),
+    CounterPage(),
+    CounterPage(),
   ];
 
   void _onItemTapped(int index) {
@@ -80,12 +80,13 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   }
 }
 
-class Counter1Page extends StatefulWidget {
+class CounterPage extends StatefulWidget {
+  
   @override
-  _Counter1PageState createState() => _Counter1PageState();
+  _CounterPageState createState() => _CounterPageState();
 }
 
-class _Counter1PageState extends State<Counter1Page> {
+class _CounterPageState extends State<CounterPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -98,7 +99,7 @@ class _Counter1PageState extends State<Counter1Page> {
           ),
           Observer(
             builder: (_) => Text(
-              '${cStore.counterArray[0]}',
+              '${cStore.counterArray[dStore.index]}',
               style: Theme.of(context).textTheme.headline4,
             ),
           ),
@@ -107,89 +108,7 @@ class _Counter1PageState extends State<Counter1Page> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               ElevatedButton(
-                  child: Text('Increment Counter 1'),
-                  onPressed: () => cStore.incrementCounter(dStore.index)),
-              ElevatedButton(
-                child: Text('Show/Hide Floating Button'),
-                onPressed: cStore.changeVisibility,
-              )
-            ],
-          )
-        ],
-      ),
-    );
-  }
-}
-
-class Counter2Page extends StatefulWidget {
-  @override
-  _Counter2PageState createState() => _Counter2PageState();
-}
-
-class _Counter2PageState extends State<Counter2Page> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Text(
-            'You have incremented the counter on this page this many times: ',
-          ),
-          Observer(
-            builder: (_) => Text(
-              '${cStore.counterArray[1]}',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              ElevatedButton(
-                  child: Text('Increment Counter 2'),
-                  onPressed: () => cStore.incrementCounter(dStore.index)),
-              ElevatedButton(
-                child: Text('Show/Hide Floating Button'),
-                onPressed: cStore.changeVisibility,
-              )
-            ],
-          )
-        ],
-      ),
-    );
-  }
-}
-
-class Counter3Page extends StatefulWidget {
-  @override
-  _Counter3PageState createState() => _Counter3PageState();
-}
-
-class _Counter3PageState extends State<Counter3Page> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Text(
-            'You have incremented the counter on this page this many times: ',
-          ),
-          Observer(
-            builder: (_) => Text(
-              '${cStore.counterArray[2]}',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              ElevatedButton(
-                  child: Text('Increment Counter 3'),
+                  child: Text('Increment Counter '),
                   onPressed: () => cStore.incrementCounter(dStore.index)),
               ElevatedButton(
                 child: Text('Show/Hide Floating Button'),
